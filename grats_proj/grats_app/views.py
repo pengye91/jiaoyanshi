@@ -1,8 +1,10 @@
-# from django.shortcuts import render
-# from django.template import RequestContext
-from models import *
+from django.shortcuts import render
 from django.http import HttpResponse
-from django.template import loader
+from django.http import Http404
+# from django.template import RequestContext
+from .models import *
+
+# from django.template import loader
 
 
 # Create your views here.
@@ -25,13 +27,26 @@ def posts(request):
 
     # for post in Post.objects:
     #     titles.append(post.title)
-    template = loader.get_template('grats_app/posts.html')
+    # template = loader.get_template("grats_app/posts.html")
     context = {
         'posts': all_posts,
     }
     # post_num = Post.objects(tags='debug').count()
-    return HttpResponse(template.render(context, request))
+    return render(request, 'grats_app/posts.html', context)
 
 
 def index(request):
-    return HttpResponse('Oops,find that you are looking at the test project for the Fucking paper of my graduation.')
+    return HttpResponse('Oops, find that you are looking at the test project for the Fucking paper of my graduation.')
+
+
+def link_detail(request):
+    try:
+        links = [post.link_url for post in Post.objects]
+        context = {'links': links}
+    except:
+        raise Http404("No link_url for TextPost")
+    return render(request, 'grats_app/link_detail.html', context)
+
+
+
+
