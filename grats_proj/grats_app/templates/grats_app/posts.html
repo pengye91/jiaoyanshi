@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+</head>
+<body>
+{% if posts %}
+    <ul>
+    {% for post in posts %}
+        <li><a href="/">{{post.title}}</a></li>
+    {% endfor %}
+    </ul>
+
+{%else%}
+    <p>No posts are available.</p>
+
+{% endif %}
+
+</body>
+</html>

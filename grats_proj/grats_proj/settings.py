@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'grats_proj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': '',
-        'NAME': '',
+        # # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'grats_proj',
+        # 'USER': 'root',
+        # 'PASSWORD': 'pengye2901307001',
+        # 'HOST': '',
+        # 'PORT': '',
     }
 }
 
